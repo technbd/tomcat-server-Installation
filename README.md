@@ -382,6 +382,34 @@ save and quit
 ./startup.sh
 ```
 
+### Tomcat ROOT Directory: 
+The ROOT web application in Apache Tomcat is a special deployment that serves as the default context for the Tomcat server. When a user accesses the Tomcat server without specifying any context path in the URL, such as http://localhost:8080/, the ROOT web application is served.
+
+The ROOT web application serves as the default context for the Tomcat server. It typically contains the main content or landing page of your website or web application. When users access the server without specifying any context path, they are directed to the ROOT context.
+
+The ROOT web application has its directory structure within the Tomcat webapps directory. By default, the ROOT directory is located at <TOMCAT_HOME>/webapps/ROOT.
+You can customize the content served by the ROOT web application by adding or modifying HTML, JSP, CSS, JavaScript, and other web resources within its directory structure.
+
+The index.html file in the ROOT web application directory (<TOMCAT_HOME>/webapps/ROOT) serves as the default landing page or home page for your Apache Tomcat server. When users access your Tomcat server without specifying a specific file or path in the URL, the index.html file is served by default.
+
+```
+vim index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <h2>Hello, world!</h2>
+</body>
+</html>
+
+
+save and quit
+```
 
 That's it! You've successfully installed Apache Tomcat on CentOS 7. Make sure to adjust the version numbers and paths according to your specific setup.
 
