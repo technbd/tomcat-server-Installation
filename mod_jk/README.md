@@ -248,23 +248,22 @@ Update your virtual Host Configuration to enable URI forwarding:
 ```
 vim /etc/httpd/conf.d/vhost.conf
 
-
 <VirtualHost *:80>
     ServerName example1.com
     ServerAlias www.example1.com
 
-	JkMount /* loadbalancer
-    #JkMount /helloworld/ node1
-    #JkMount /SampleWebApp/ node1
+    #JkMount /* loadbalancer
+
+    JkMount /helloworld/ node1
+    #JkMount /SampleWebApp/* node2
 	
 </VirtualHost>
-
 
 <VirtualHost *:80>
     ServerName example2.com
     ServerAlias www.example2.com
 
-    JkMount /SampleWebApp/ node2
+    JkMount /SampleWebApp/* node2
 	
 </VirtualHost>
 
@@ -276,6 +275,14 @@ vim /etc/httpd/conf.d/vhost.conf
 ```
 systemctl restart httpd
 systemctl status httpd
+```
+
+
+```
+# Host Entry:
+
+192.168.10.100 example1.com
+192.168.10.100 example2.com
 ```
 
 
