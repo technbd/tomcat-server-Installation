@@ -187,15 +187,23 @@ JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
 JkRequestLogFormat "%w %V %T"
 
 
-#JkMount /status jkstatus
+JkMount /status/ jkstatus
 
 #JkMount /helloworld/ node1
 #JkMount /SampleWebApp/ node2
 
 
-#JkMount /* loadbalancer
+JkMount /* loadbalancer
 #JkMount /helloworld/ loadbalancer
 #JkMount /SampleWebApp/ loadbalancer
+
+<Location /status/>
+    JkMount jkstatus
+
+    Order deny,allow
+    Deny from all
+    Allow from 192.168.10.44
+</Location>
 
 
 :wq
